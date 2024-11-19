@@ -12,11 +12,11 @@ Nhóm: 11
 
 ## Nhóm sinh viên thực hiện
 
-* Trần Tuấn Anh
-* Huỳnh Thu Hoài
-* Vũ Hoàng Nhi
-* Nguyễn Bá Trung Quân
-* Vàng Mạnh Quỳnh
+* Trần Tuấn Anh (Java)
+* Huỳnh Thu Hoài (C-Sharp)
+* Vũ Hoàng Nhi (Java)
+* Nguyễn Bá Trung Quân (Java)
+* Vàng Mạnh Quỳnh (C-Sharp)
 
 
 
