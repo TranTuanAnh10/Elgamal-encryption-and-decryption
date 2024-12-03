@@ -23,3 +23,4 @@ Nhóm: 11
 ## Báo cáo
 * [Phiếu báo cáo học tập](https://docs.google.com/document/d/1Vw5lhn6J2IR5xZxuwWbAGBaDIzZLBMNVxVOe2P3A2tw/edit?usp=sharing)
 * [Báo cáo thực nghiệm](https://docs.google.com/document/d/18cmVeJAQDkgCojiI-vkBYLBFnk5nXTWPm9WCwQnIEac/edit?usp=sharing)
+* [Giao diện của chương trình (figma)](https://www.figma.com/design/O0ZUXWYYDFDEm8RFxZ6YO9/Mockup-for-elgamal-program?t=mS1C77pZFAJpHgJf-1)
