@@ -9,7 +9,7 @@ public class ElGamalEncryptor {
     /**
      * Initializes the encrypt with public key.
      *
-     * @param publicKey.
+   
      */
     public ElGamalEncryptor() {
         //update soon
@@ -17,7 +17,7 @@ public class ElGamalEncryptor {
     /**
      * Encrypts a message
      *
-     * @param message The plaintext message to encrypt.
+
      */
     public void encrypt() {
         //update soon

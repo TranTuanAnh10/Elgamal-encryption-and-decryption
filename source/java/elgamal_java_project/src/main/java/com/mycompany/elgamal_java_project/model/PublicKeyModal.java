@@ -12,9 +12,9 @@ import java.math.BigInteger;
  */
 public class PublicKeyModal {
     
-    private final BigInteger q; 
-    private final BigInteger a; 
-    private final BigInteger y; 
+    public final BigInteger q; 
+    public final BigInteger a; 
+    public final BigInteger y; 
     
     public PublicKeyModal(BigInteger _q, BigInteger _a, BigInteger _y){
         this.q = _q;

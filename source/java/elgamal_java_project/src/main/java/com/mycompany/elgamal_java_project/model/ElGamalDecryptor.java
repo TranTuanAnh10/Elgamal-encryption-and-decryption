@@ -24,7 +24,6 @@ public class ElGamalDecryptor {
      * Decrypts a cipher text using the private key.
      *
      * @param ciphertext An array containing the cipher text: {c1, c2}.
-     * @return The decrypted plain text message.
      */
     public void decrypt(int[] ciphertext) {
         //update soon

@@ -17,7 +17,10 @@ public class ElGamalKeyGenerator {
     /**
     * Generated keys.
     *
-    * @param bitLength Length of the prime number in bits.
+    * @param q     
+    * @param a 
+    * 
+    * @return ElGamalKey contain private key and public key
     */
     public ElGamalKey GenerateKey(BigInteger q, BigInteger a){
         if(IsPrimitiveRoot(a, q) == false || IsPrime(q) == false){
@@ -31,6 +34,7 @@ public class ElGamalKeyGenerator {
     }
     /**
     * Generated keys with random q and a .
+    * @return ElGamalKey contain private key and public key
     */
     public ElGamalKey GenerateKey(){
         //update soon
@@ -47,10 +51,21 @@ public class ElGamalKeyGenerator {
         }
     }
     
+    /**
+    * GeneratePrivateKey.
+    * @param q 
+    * @return BigInteger private key
+    */
     private BigInteger GeneratePrivateKey(BigInteger q){
         SecureRandom random = new SecureRandom();
         return new BigInteger(q.bitLength() - 1, random);
     }
+    
+    /**
+    * Find the primitive root of a .
+    * @param prime number to find primitive root
+    * @return BigInteger primitive root
+    */
     private BigInteger FindPrimitiveRoot(BigInteger prime) {
         BigInteger phi = prime.subtract(BigInteger.ONE);
         Set<BigInteger> primeFactors = GetPrimeFactors(phi);
@@ -97,14 +112,19 @@ public class ElGamalKeyGenerator {
 
         return factors;
     }
-    
-    private boolean IsPrimitiveRoot(BigInteger a, BigInteger p) {
-        BigInteger phi = p.subtract(BigInteger.ONE);
+    /**
+    * Check if a is a primitive root of q.
+    * @param a Number to check
+    * @param q Number to check
+    * @return true or false
+    */
+    private boolean IsPrimitiveRoot(BigInteger a, BigInteger q) {
+        BigInteger phi = q.subtract(BigInteger.ONE);
         Set<BigInteger> primeFactors = GetPrimeFactors(phi);
 
         // Check if a^phi/q mod p != 1 for all prime factors q of phi
         for (BigInteger factor : primeFactors) {
-            if (a.modPow(phi.divide(factor), p).equals(BigInteger.ONE)) {
+            if (a.modPow(phi.divide(factor), q).equals(BigInteger.ONE)) {
                 return false;
             }
         }
@@ -112,8 +132,12 @@ public class ElGamalKeyGenerator {
         return true;
     }
     
-    //Check prime number
-    private static boolean IsPrime(BigInteger n) {
+    /**
+    * Check prime number
+    * @param a Number to check
+    * @return true or false
+    */
+    private boolean IsPrime(BigInteger n) {
         if (n.compareTo(BigInteger.ONE) <= 0) {
           return false;
         }
