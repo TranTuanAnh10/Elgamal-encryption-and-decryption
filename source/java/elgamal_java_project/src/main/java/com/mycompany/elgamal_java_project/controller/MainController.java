@@ -4,10 +4,6 @@
  */
 package com.mycompany.elgamal_java_project.controller;
 
-/**
- *
- * @author Tobi - Dev
- */
 public class MainController {
     
 }

@@ -4,31 +4,30 @@
  */
 package com.mycompany.elgamal_java_project.model;
 
+import java.math.BigInteger;
+
 
 public class ElGamalKey {
-    private final int p; 
-    private final int g; 
-    private int privateKey; 
-    private int publicKey; 
+    private final BigInteger privateKey; 
+    private final PublicKeyModal publicKey; 
     
-    public ElGamalKey(int _p, int _g, int _privateKey, int _publicKey){
-        this.p = _p;
-        this.g = _g;
-        this.privateKey = _privateKey;
+    public ElGamalKey(BigInteger _q, BigInteger _a, BigInteger _x, BigInteger _y){
+        this.privateKey = _x;
+        this.publicKey = new PublicKeyModal(_q, _a, _y);
     }
-    public int getP() {
-        return p;
-    }
-
-    public int getG() {
-        return g;
+    public BigInteger getP() {
+        return publicKey.q;
     }
 
-    public int getPrivateKey() {
+    public BigInteger getA() {
+        return publicKey.a;
+    }
+
+    public BigInteger getPrivateKey() {
         return privateKey;
     }
 
-    public int getPublicKey() {
+    public PublicKeyModal getPublicKey() {
         return publicKey;
     }
 }
