@@ -17,7 +17,7 @@ public class GenerateKeyView {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Tiêu đề
-        JLabel titleLabel = new JLabel("Tạo khóa", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Tạo khóa", SwingConstants.CENTER);  
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridx = 0;
         gbc.gridy = 0;

@@ -6,5 +6,6 @@ package com.mycompany.elgamal_java_project.utils;
 
 
 public class Utils {
-    
+    public static final int FRAME_WIDTH = 800;
+    public static final int FRAME_HEIGHT = 600;
 }

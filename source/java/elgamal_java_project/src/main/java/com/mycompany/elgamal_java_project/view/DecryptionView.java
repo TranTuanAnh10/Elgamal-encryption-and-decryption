@@ -5,10 +5,10 @@ import com.mycompany.elgamal_java_project.utils.Utils;
 import javax.swing.*;
 import java.awt.*;
 
-public class EncryptionView {
+public class DecryptionView {
     public static void main(String[] args) {
         // Tạo khung chính
-        JFrame frame = new JFrame("Mã hóa");
+        JFrame frame = new JFrame("Giải  mã");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Utils.FRAME_WIDTH, Utils.FRAME_HEIGHT);
         frame.setLayout(new GridBagLayout());
@@ -17,7 +17,7 @@ public class EncryptionView {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Tiêu đề
-        JLabel titleLabel = new JLabel("Mã hóa", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Giải mã", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -25,7 +25,7 @@ public class EncryptionView {
         frame.add(titleLabel, gbc);
 
         // Khoá công khai
-        JLabel pLabel = new JLabel("Khoá công khai:");
+        JLabel pLabel = new JLabel("Khoá bí mật:");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
@@ -38,7 +38,7 @@ public class EncryptionView {
         frame.add(pField, gbc);
 
         // Văn bản cần mã hóa
-        JLabel aLabel = new JLabel("Văn bản cần mã hóa:");
+        JLabel aLabel = new JLabel("Văn bản cần giải mã:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         frame.add(aLabel, gbc);
@@ -53,12 +53,12 @@ public class EncryptionView {
         frame.add(textAreaScrollPane, gbc);
 
         // Nút Mã hóa
-        JButton encryptButton = new JButton("Mã hóa");
+        JButton decodeButton = new JButton("Giải mã");
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
-        encryptButton.setAlignmentX(Component.CENTER_ALIGNMENT); // Căn giữa
-        frame.add(encryptButton, gbc);
+        decodeButton.setAlignmentX(Component.CENTER_ALIGNMENT); // Căn giữa
+        frame.add(decodeButton, gbc);
 
         // Kết quả
         JLabel bLabel = new JLabel("Kết quả:");
