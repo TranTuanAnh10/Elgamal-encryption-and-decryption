@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.elgamal_java_project.controller;
-
-public class MainController {
-    
-}
+public static void main(String[] args) {
+        ElGamalScreen view = new ElGamalScreen();
+        ElGamalController controller = new ElGamalController(view);
+    } dùng thì gọi như này
