@@ -12,13 +12,16 @@ import java.math.BigInteger;
  */
 public class PublicKeyModal {
     
-    public final BigInteger q; 
+    public final BigInteger p; 
     public final BigInteger a; 
     public final BigInteger y; 
     
     public PublicKeyModal(BigInteger _q, BigInteger _a, BigInteger _y){
-        this.q = _q;
+        this.p = _q;
         this.a = _a;
         this.y = _y;
+    }
+    public String ToString(){
+        return p.toString() + "," + a.toString() + "," + y.toString();
     }
 }

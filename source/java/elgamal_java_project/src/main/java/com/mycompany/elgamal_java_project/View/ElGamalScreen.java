@@ -1,5 +1,7 @@
 package com.mycompany.elgamal_java_project.view;
 
+import com.mycompany.elgamal_java_project.model.PublicKeyModal;
+import com.mycompany.elgamal_java_project.utils.Utils;
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,12 +11,18 @@ public class ElGamalScreen {
     private static JButton randomKeyButton;
     private static JButton encryptButton;
     private static JButton decodeButton;
+    private static JTextArea privateKeyArea;
+    private static JTextArea publicKeyArea;
+    private static JTextField publicKeyInput;
+
+
+
 
     public ElGamalScreen() {
         // Tạo khung chính
         JFrame frame = new JFrame("ElGamal Encryption & Decryption");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 500); // Đặt kích thước cửa sổ
+        frame.setSize(Utils.FRAME_WIDTH, Utils.FRAME_HEIGHT); // Đặt kích thước cửa sổ
         frame.setLayout(new BorderLayout(10, 10)); // Sử dụng BorderLayout để chia cửa sổ thành 5 khu vực
 
         // Tạo các panel cho mã hóa, giải mã và tạo khóa
@@ -22,6 +30,8 @@ public class ElGamalScreen {
         JPanel encryptionPanel = createEncryptionPanel();   // Panel mã hóa
         JPanel generateKeyPanel = createGenerateKeyPanel(); // Panel tạo khóa
 
+//        generateKeyPanel.get
+        
         JPanel rightPanel = new JPanel(new BorderLayout(10, 10));
         rightPanel.add(encryptionPanel, BorderLayout.NORTH); // Mã hóa bên trên
         rightPanel.add(decryptionPanel, BorderLayout.CENTER); // Giải mã bên dưới
@@ -114,10 +124,10 @@ public class ElGamalScreen {
         gbc.gridwidth = 1;
         panel.add(pLabel, gbc);
 
-        JTextField pField = new JTextField();
+        publicKeyInput = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
-        panel.add(pField, gbc);
+        panel.add(publicKeyInput, gbc);
 
         JLabel aLabel = new JLabel("Văn bản cần mã hóa:");
         gbc.gridx = 0;
@@ -204,7 +214,7 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(privateKeyLabel, gbc);
 
-        JTextArea privateKeyArea = new JTextArea(3, 20);
+        privateKeyArea = new JTextArea(3, 20);  
         privateKeyArea.setEditable(false);
         gbc.gridx = 1;
         gbc.gridy = 4;
@@ -215,19 +225,29 @@ public class ElGamalScreen {
         gbc.gridy = 5;
         panel.add(publicKeyLabel, gbc);
 
-        JTextArea publicKeyArea = new JTextArea(3, 20);
+        publicKeyArea = new JTextArea(3, 20);  
         publicKeyArea.setEditable(false);
         gbc.gridx = 1;
         gbc.gridy = 5;
         panel.add(new JScrollPane(publicKeyArea), gbc);
 
-        saveKeyButton = new JButton("Lưu khóa");
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        gbc.gridwidth = 2;
-        panel.add(saveKeyButton, gbc);
+//        saveKeyButton = new JButton("Lưu khóa");
+//        gbc.gridx = 0;
+//        gbc.gridy = 6;
+//        gbc.gridwidth = 2;
+//        panel.add(saveKeyButton, gbc);
 
         return panel;
+    }
+    
+    //Public method to update jframe
+    public void updateKeys(String privateKey, PublicKeyModal publicKey) {
+        System.out.println("updateKeys");
+        privateKeyArea.setText(privateKey);
+        publicKeyArea.setText(publicKey.ToString());
+    }
+    public String GetPublicKey(){
+        return publicKeyInput.getText();
     }
 
     // Các phương thức setter và getter cho các nút

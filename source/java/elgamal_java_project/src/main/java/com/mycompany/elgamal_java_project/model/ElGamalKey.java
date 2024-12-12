@@ -16,7 +16,7 @@ public class ElGamalKey {
         this.publicKey = new PublicKeyModal(_q, _a, _y);
     }
     public BigInteger getP() {
-        return publicKey.q;
+        return publicKey.p;
     }
 
     public BigInteger getA() {
