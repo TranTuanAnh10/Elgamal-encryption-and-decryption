@@ -14,10 +14,7 @@ public class ElGamalScreen {
         // Tạo khung chính
         JFrame frame = new JFrame("ElGamal Encryption & Decryption");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Đặt chế độ cửa sổ mở toàn màn hình (Maximized)
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Mở cửa sổ ở chế độ full màn hình
-        frame.setUndecorated(true); // Tùy chọn bỏ thanh tiêu đề, nếu muốn toàn màn hình thực sự
+        frame.setSize(800, 500); // Đặt kích thước cửa sổ
         frame.setLayout(new BorderLayout(10, 10)); // Sử dụng BorderLayout để chia cửa sổ thành 5 khu vực
 
         // Tạo các panel cho mã hóa, giải mã và tạo khóa
@@ -25,14 +22,17 @@ public class ElGamalScreen {
         JPanel encryptionPanel = createEncryptionPanel();   // Panel mã hóa
         JPanel generateKeyPanel = createGenerateKeyPanel(); // Panel tạo khóa
 
-        // Thêm các panel vào các khu vực của BorderLayout
-        frame.add(decryptionPanel, BorderLayout.CENTER);   // Center: Giải mã
-        frame.add(encryptionPanel, BorderLayout.WEST);     // West: Mã hóa
-        frame.add(generateKeyPanel, BorderLayout.EAST);    // East: Tạo khóa
+        JPanel rightPanel = new JPanel(new BorderLayout(10, 10));
+        rightPanel.add(encryptionPanel, BorderLayout.NORTH); // Mã hóa bên trên
+        rightPanel.add(decryptionPanel, BorderLayout.CENTER); // Giải mã bên dưới
 
-        // Cài đặt khung để tự động điều chỉnh kích thước khi thay đổi kích thước cửa sổ
-        frame.pack(); // Đảm bảo các thành phần trong cửa sổ có kích thước đúng
-        frame.setVisible(true); // Hiển thị khung
+        // Thêm các panel vào các khu vực của BorderLayout
+        frame.add(generateKeyPanel, BorderLayout.WEST);     // West: Tạo khóa
+        frame.add(rightPanel, BorderLayout.CENTER); 
+
+        // Hiển thị khung
+        frame.setLocationRelativeTo(null); // Hiển thị cửa sổ ở giữa màn hình
+        frame.setVisible(true);
     }
 
     // Phương thức tạo JPanel cho giải mã

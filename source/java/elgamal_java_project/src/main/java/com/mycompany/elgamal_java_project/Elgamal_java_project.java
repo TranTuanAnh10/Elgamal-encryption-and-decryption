@@ -4,6 +4,9 @@
 
 package com.mycompany.elgamal_java_project;
 
+import com.mycompany.elgamal_java_project.controller.ElGamalController;
+import com.mycompany.elgamal_java_project.view.ElGamalScreen;
+
 /**
  *
  * @author Tobi - Dev
@@ -11,6 +14,7 @@ package com.mycompany.elgamal_java_project;
 public class Elgamal_java_project {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ElGamalScreen view = new ElGamalScreen();
+        new ElGamalController(view);
     }
 }
