@@ -1,27 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.elgamal_java_project.model;
 
 import java.math.BigInteger;
 
-/**
- *
- * @author PC
- */
 public class PublicKeyModal {
     
     public final BigInteger p; 
     public final BigInteger a; 
     public final BigInteger y; 
     
+    // Constructor
     public PublicKeyModal(BigInteger _q, BigInteger _a, BigInteger _y){
         this.p = _q;
         this.a = _a;
         this.y = _y;
     }
+    
     public String ToString(){
         return p.toString() + "," + a.toString() + "," + y.toString();
     }
+ public static PublicKeyModal parse(String publicKeyInput) {
+    try {
+        // Cắt chuỗi thành các phần tử và chuyển thành BigInteger
+        String[] parts = publicKeyInput.split(",");
+        if (parts.length != 3) {
+            throw new IllegalArgumentException("Dữ liệu khoá công khai không hợp lệ. Phải gồm 3 phần: q, a, y.");
+        }
+        BigInteger q = new BigInteger(parts[0].trim());
+        BigInteger a = new BigInteger(parts[1].trim());
+        BigInteger y = new BigInteger(parts[2].trim());
+
+        // Kiểm tra giá trị khóa công khai
+        if (!q.isProbablePrime(100)) {
+            throw new IllegalArgumentException("Giá trị q phải là số nguyên tố.");
+        }
+        if (a.compareTo(BigInteger.ONE) <= 0 || a.compareTo(q) >= 0) {
+            throw new IllegalArgumentException("Giá trị a phải thuộc khoảng (1, q).");
+        }
+        if (y.compareTo(BigInteger.ONE) <= 0 || y.compareTo(q) >= 0) {
+            throw new IllegalArgumentException("Giá trị y phải thuộc khoảng (1, q).");
+        }
+
+        return new PublicKeyModal(q, a, y);
+    } catch (Exception e) {
+        throw new IllegalArgumentException("Lỗi khi phân tích khoá công khai: " + e.getMessage());
+    }
+}
+
 }

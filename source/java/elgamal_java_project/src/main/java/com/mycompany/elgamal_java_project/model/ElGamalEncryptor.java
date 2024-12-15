@@ -4,34 +4,40 @@
  */
 package com.mycompany.elgamal_java_project.model;
 
-import com.mycompany.elgamal_java_project.utils.Utils;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.security.SecureRandom;
 
-
 public class ElGamalEncryptor {
-    /**
-     * Initializes the encrypt with public key.
-     *
-   
-     */
-    public ElGamalEncryptor() {
-        //update soon
+    private PublicKeyModal publicKey;
+    private SecureRandom random = new SecureRandom(); // Sử dụng SecureRandom để sinh số ngẫu nhiên
+
+    // Constructor
+    public ElGamalEncryptor(PublicKeyModal publicKey) {
+        this.publicKey = publicKey;
     }
-    /**
-     * Encrypts a message
-     *
-     * @param message
-     * @param publicKey
-     * @return CipherText
-     * @throws java.lang.Exception 
-     */
-    public static CipherText encrypt(String message, PublicKeyModal publicKey) throws Exception {
-        BigInteger painTextHash = Utils.hashMessage(message);
-        SecureRandom random = new SecureRandom();
-        BigInteger k = new BigInteger(publicKey.p.bitLength() - 1, random).mod(publicKey.p.subtract(BigInteger.ONE));
-        BigInteger c1 = publicKey.a.modPow(k, publicKey.p);
-        BigInteger c2 = painTextHash.multiply(publicKey.y.modPow(k, publicKey.p)).mod(publicKey.p);
-        return new CipherText(c1, c2);
+
+    // Phương thức mã hoá
+    public String encrypt(String plaintext) {
+        StringBuilder ciphertext = new StringBuilder();
+
+        for (char ch : plaintext.toCharArray()) {
+            BigInteger m = BigInteger.valueOf((int) ch); // Chuyển ký tự thành mã ASCII
+            BigInteger r = new BigInteger(publicKey.p.bitLength() - 1, random); // Sinh số ngẫu nhiên r
+            BigInteger c1 = publicKey.a.modPow(r, publicKey.p);
+            BigInteger c2 = (m.multiply(publicKey.y.modPow(r, publicKey.p))).mod(publicKey.p);
+
+            // Thêm cặp (c1, c2) vào kết quả
+            if (ciphertext.length() > 0) {
+                ciphertext.append(","); // Ngăn cách các cặp bằng dấu phẩy
+            }
+            ciphertext.append(c1).append(":").append(c2);
+        }
+
+        return ciphertext.toString(); // Trả về chuỗi mã hóa
     }
 }
+
+
+

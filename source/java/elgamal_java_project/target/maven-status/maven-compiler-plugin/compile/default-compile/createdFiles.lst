@@ -10,4 +10,5 @@ com\mycompany\elgamal_java_project\view\ElGamalScreen.class
 com\mycompany\elgamal_java_project\Elgamal_java_project.class
 com\mycompany\elgamal_java_project\controller\ElGamalController.class
 com\mycompany\elgamal_java_project\model\ElGamalKey.class
+com\mycompany\elgamal_java_project\model\CipherText.class
 com\mycompany\elgamal_java_project\controller\ElGamalController$DecodeButtonListener.class
