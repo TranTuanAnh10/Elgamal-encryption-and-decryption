@@ -14,7 +14,8 @@ public class ElGamalScreen {
     private static JTextArea privateKeyArea;
     private static JTextArea publicKeyArea;
     private static JTextField publicKeyInput;
-
+    private static JTextArea textArea;
+    private static JTextArea encryptArea;
 
 
 
@@ -134,7 +135,7 @@ public class ElGamalScreen {
         gbc.gridy = 2;
         panel.add(aLabel, gbc);
 
-        JTextArea textArea = new JTextArea(3, 20);
+        textArea = new JTextArea(3, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         JScrollPane textAreaScrollPane = new JScrollPane(textArea);
@@ -153,9 +154,12 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(bLabel, gbc);
 
-        JTextArea ansArea = new JTextArea(3, 20);
-        ansArea.setEditable(false);
-        JScrollPane ansAreaScrollPane = new JScrollPane(ansArea);
+        encryptArea = new JTextArea(5, 20);
+        encryptArea.setEditable(false);
+        encryptArea.setLineWrap(true); 
+        encryptArea.setWrapStyleWord(true);
+        JScrollPane ansAreaScrollPane = new JScrollPane(encryptArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         gbc.gridx = 1;
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
@@ -246,9 +250,24 @@ public class ElGamalScreen {
         privateKeyArea.setText(privateKey);
         publicKeyArea.setText(publicKey.ToString());
     }
-    public String GetPublicKey(){
+    
+    public String getPublicKey(){
         return publicKeyInput.getText();
     }
+
+    public String getPlainText() {
+        
+        return textArea.getText(); 
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message); 
+    }
+
+    public void setCipherText(String cipherText) {
+        encryptArea.setText(cipherText); 
+    }
+
 
     // Các phương thức setter và getter cho các nút
     public void addSaveKeyListener(java.awt.event.ActionListener listener) {
@@ -270,5 +289,7 @@ public class ElGamalScreen {
     public void addDecodeButtonListener(java.awt.event.ActionListener listener) {
         decodeButton.addActionListener(listener);
     }
-
+    public void showEncryptedText(String encryptedText) {
+    encryptArea.setText(encryptedText);
+    }
 }

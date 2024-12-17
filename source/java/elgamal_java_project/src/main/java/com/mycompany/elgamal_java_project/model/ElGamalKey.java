@@ -30,4 +30,25 @@ public class ElGamalKey {
     public PublicKeyModal getPublicKey() {
         return publicKey;
     }
+    // Thêm phương thức parsePublicKey()
+    public static PublicKeyModal parsePublicKey(String publicKeyStr) {
+        // Giả sử chuỗi publicKeyStr có định dạng như "p,a,y"
+        String[] parts = publicKeyStr.split(",");
+        
+        if (parts.length != 3) {
+            throw new IllegalArgumentException("Invalid public key format");
+        }
+
+        try {
+            BigInteger p = new BigInteger(parts[0].trim()); // p là số nguyên tố
+            BigInteger a = new BigInteger(parts[1].trim()); // a là phần tử nguyên thủy
+            BigInteger y = new BigInteger(parts[2].trim()); // y là giá trị khóa công khai
+
+            // Trả về đối tượng PublicKeyModal với các giá trị p, a, y
+            return new PublicKeyModal(p, a, y);
+
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid public key format: " + e.getMessage());
+        }
+    }
 }
