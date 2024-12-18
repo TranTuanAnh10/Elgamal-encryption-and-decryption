@@ -1,0 +1,118 @@
+﻿<Window x:Class="ATBMTT.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBMTT"
+        mc:Ignorable="d"
+        Title="Mã hóa và giải mã Elgamal" Height="800" Width="1000" FontSize="25" Background="Beige" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="auto"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Tạo Khóa"
+               HorizontalAlignment="Center" FontSize="30" FontWeight="Black" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Số nguyên tố p:" 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPrime" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,5,50,5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Phần tử nguyên thủy của a:"  Grid.ColumnSpan="2"
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPrimitiveRoot" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="21,5,51,5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
+            <Button x:Name="btnGenerateKeys" Margin="20,5,20,0" FontSize="20" 
+                    Click="btnGenerateKeys_Click">Tạo khóa</Button>
+            <Button x:Name="btnRandomKeys" Margin="0,5,20,0" Width="207" FontSize="20"
+                    Click="btnRandomKeys_Click">Tạo khóa ngẫu nhiên</Button>
+        </StackPanel>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="Khóa bí mật" 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPrivateKey" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,5,48,5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <Label Grid.Row="9" Grid.Column="0" Content="Khóa công khai" 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPublicKey" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,5,46,5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+
+
+        <Label Grid.Row="0" Grid.Column="3"  Content="Mã hóa"
+               HorizontalAlignment="Center" FontSize="30"
+               FontWeight="Black"
+               Style="{StaticResource labelStyle}"/>
+
+        <Label Grid.Row="1" Grid.Column="2" Content="Khóa công khai" 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPublicKeyInput" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <Label Grid.Row="3" Grid.Column="2" Content="Văn bản cần mã hóa" Grid.ColumnSpan="3"
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtMessage" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+
+        <Button x:Name="btnEncrypt" Margin="0,0,20,0" Grid.Column="3" Grid.Row="5"
+                Click="btnEncrypt_Click">Mã hóa</Button>
+
+        <Label Grid.Row="6" Grid.Column="2" Content="Kết quả " 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtEncrypted" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <Label Grid.Row="9" Grid.Column="3"  Content="Giải mã"
+               HorizontalAlignment="Center" FontSize="30" 
+               FontWeight="Black"/>
+
+
+        <Label Grid.Row="10" Grid.Column="2" Content="Khóa bí mật" 
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtPrivateKeyInput" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+        <Label Grid.Row="12" Grid.Column="2" Content="Văn bản cần giải mã" Grid.ColumnSpan="3"
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtEncryptedInput" Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+
+        <Button x:Name="btnDecrypt" Margin="0,0,20,0" Grid.Column="3" Grid.Row="14"
+                Click="btnDecrypt_Click">Giải mã</Button>
+
+        <Label Grid.Row="15" Grid.Column="2" Content="Kết quả "  
+               Style="{StaticResource labelStyle}"/>
+        <TextBox x:Name="txtDecrypted" Grid.Row="16" Grid.Column="2" Grid.ColumnSpan="3" Margin="5" 
+                 Style="{StaticResource textBoxStyle}"/>
+
+    </Grid>
+</Window>
