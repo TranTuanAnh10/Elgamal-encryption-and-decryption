@@ -17,9 +17,10 @@ namespace ATBMTT
     public partial class MainWindow : Window
     {
         private BigInteger p; 
-        private BigInteger g; 
-        private BigInteger privateKey; 
+        private BigInteger g;
+        private BigInteger privateKey;
         private BigInteger publicKey;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,14 +57,15 @@ namespace ATBMTT
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         private void btnRandomKeys_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                p = GenerateLargePrime(); 
+                p = GenerateLargePrime();
                 g = FindPrimitiveRoot(p);
                 privateKey = GenerateRandomBigInteger(p - 2) + 1;
-                publicKey = BigInteger.ModPow(g, privateKey, p); 
+                publicKey = BigInteger.ModPow(g, privateKey, p);
 
                 txtPrime.Text = p.ToString();
                 txtPrimitiveRoot.Text = g.ToString();
@@ -93,20 +95,13 @@ namespace ATBMTT
                 BigInteger y = BigInteger.Parse(publicKeyInput[2]);
 
                 string message = txtMessage.Text;
-                BigInteger m = ConvertMessageToBigInteger(message, p);
+                string encrypted = EncryptLongMessage(message, p, g, y);
 
-                if (m == -1)
+                if (!string.IsNullOrWhiteSpace(encrypted))
                 {
-                    MessageBox.Show("Thông điệp quá lớn để mã hóa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    txtEncrypted.Text = encrypted;
+                    MessageBox.Show("Mã hóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
-                BigInteger k = GenerateRandomBigInteger(p - 2) + 1;
-                BigInteger c1 = BigInteger.ModPow(g, k, p);
-                BigInteger c2 = (m * BigInteger.ModPow(y, k, p)) % p;
-
-                txtEncrypted.Text = $"{c1}, {c2}";
-                MessageBox.Show("Mã hóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
@@ -118,27 +113,96 @@ namespace ATBMTT
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtEncryptedInput.Text) || txtEncryptedInput.Text.Split(',').Length != 2)
+                if (string.IsNullOrWhiteSpace(txtEncryptedInput.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập văn bản mã hóa đúng định dạng: c1,c2.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Vui lòng nhập văn bản mã hóa.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                var ciphertext = txtEncryptedInput.Text.Split(',');
-                BigInteger c1 = BigInteger.Parse(ciphertext[0]);
-                BigInteger c2 = BigInteger.Parse(ciphertext[1]);
-                BigInteger s = BigInteger.ModPow(c1, privateKey, p);
-                BigInteger sInverse = ModInverse(s, p); 
-                BigInteger m = (c2 * sInverse) % p;
+                string encryptedMessage = txtEncryptedInput.Text;
+                string decryptedMessage = DecryptLongMessage(encryptedMessage, p, privateKey);
 
-                string decryptedMessage = ConvertBigIntegerToMessage(m);
-                txtDecrypted.Text = decryptedMessage;
-                MessageBox.Show("Giải mã thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (!string.IsNullOrWhiteSpace(decryptedMessage))
+                {
+                    txtDecrypted.Text = decryptedMessage;
+                    MessageBox.Show("Giải mã thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private string ComputeSHA256Hash(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
+        }
+
+        private string EncryptLongMessage(string message, BigInteger p, BigInteger g, BigInteger y)
+        {
+            List<string> encryptedBlocks = new List<string>();
+            byte[] messageBytes = Encoding.UTF8.GetBytes(message);
+            int blockSize = (int)Math.Floor(BigInteger.Log(p) / 8);
+            int offset = 0;
+
+            while (offset < messageBytes.Length)
+            {
+                byte[] blockBytes = messageBytes.Skip(offset).Take(blockSize).ToArray();
+                offset += blockSize;
+
+                BigInteger m = new BigInteger(blockBytes.Reverse().ToArray());
+                if (m >= p)
+                {
+                    MessageBox.Show("Khối dữ liệu quá lớn để mã hóa!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return null;
+                }
+
+                BigInteger k = GenerateRandomBigInteger(p - 2) + 1;
+                BigInteger c1 = BigInteger.ModPow(g, k, p);
+                BigInteger c2 = (m * BigInteger.ModPow(y, k, p)) % p;
+
+                encryptedBlocks.Add($"{c1},{c2}");
+            }
+
+            return string.Join(";", encryptedBlocks);
+        }
+
+        private string DecryptLongMessage(string encryptedMessage, BigInteger p, BigInteger privateKey)
+        {
+            var blocks = encryptedMessage.Split(';');
+            List<byte> messageBytes = new List<byte>();
+
+            foreach (var block in blocks)
+            {
+                var parts = block.Split(',');
+                BigInteger c1 = BigInteger.Parse(parts[0]);
+                BigInteger c2 = BigInteger.Parse(parts[1]);
+
+                BigInteger s = BigInteger.ModPow(c1, privateKey, p);
+                BigInteger sInverse = ModInverse(s, p);
+                BigInteger m = (c2 * sInverse) % p;
+
+                byte[] blockBytes = m.ToByteArray();
+                Array.Reverse(blockBytes);
+                messageBytes.AddRange(blockBytes);
+            }
+
+            return Encoding.UTF8.GetString(messageBytes.ToArray());
+        }
+
+        private bool IsPrime(BigInteger n)
+        {
+            if (n < 2) return false;
+            for (BigInteger i = 2; i * i <= n; i++)
+                if (n % i == 0)
+                    return false;
+            return true;
         }
 
         private BigInteger GenerateLargePrime()
@@ -150,34 +214,6 @@ namespace ATBMTT
                 prime = new BigInteger(rand.Next());
             } while (!IsPrime(prime));
             return prime;
-        }
-
-        private BigInteger ConvertMessageToBigInteger(string message, BigInteger p)
-        {
-            byte[] messageBytes = Encoding.UTF8.GetBytes(message);
-            BigInteger m = new BigInteger(messageBytes.Reverse().ToArray()); 
-
-            if (m >= p) 
-            {
-                return -1;
-            }
-
-            return m;
-        }
-
-        private string ConvertBigIntegerToMessage(BigInteger m)
-        {
-            byte[] messageBytes = m.ToByteArray();
-            Array.Reverse(messageBytes);
-            return Encoding.UTF8.GetString(messageBytes);
-        }
-        private bool IsPrime(BigInteger n)
-        {
-            if (n < 2) return false;
-            for (BigInteger i = 2; i * i <= n; i++)
-                if (n % i == 0)
-                    return false;
-            return true;
         }
 
         private BigInteger FindPrimitiveRoot(BigInteger p)

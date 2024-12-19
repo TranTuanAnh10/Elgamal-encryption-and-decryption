@@ -61,3 +61,68 @@ D:\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\refint\ATBMTT.dll
 D:\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.pdb
 D:\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.genruntimeconfig.cache
 D:\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ref\ATBMTT.dll
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.exe
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.deps.json
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.runtimeconfig.json
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.dll
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.pdb
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.cache
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.lref
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\App.baml
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.g.resources
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfoInputs.cache
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfo.cs
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.csproj.CoreCompileInputs.cache
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.dll
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\refint\ATBMTT.dll
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.pdb
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.genruntimeconfig.cache
+C:\Users\HuynhHoai\Documents\Zalo Received Files\ATBMTT (1)\ATBMTT\obj\Debug\net6.0-windows\ref\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.exe
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.deps.json
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.runtimeconfig.json
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.pdb
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\App.g.cs
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.cache
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.lref
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\App.baml
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.g.resources
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfoInputs.cache
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfo.cs
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.csproj.CoreCompileInputs.cache
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.sourcelink.json
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\refint\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.pdb
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.genruntimeconfig.cache
+C:\Code\elgamal-encryption-and-decryption\ATBMTT\obj\Debug\net6.0-windows\ref\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.exe
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.deps.json
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.runtimeconfig.json
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\bin\Debug\net6.0-windows\ATBMTT.pdb
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\App.g.cs
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.cache
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT_MarkupCompile.lref
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\App.baml
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.g.resources
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfoInputs.cache
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.AssemblyInfo.cs
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.csproj.CoreCompileInputs.cache
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.sourcelink.json
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\refint\ATBMTT.dll
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.pdb
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ATBMTT.genruntimeconfig.cache
+C:\Code\elgamal-encryption-and-decryption\source\csharp\ATBMTT\ATBMTT\obj\Debug\net6.0-windows\ref\ATBMTT.dll

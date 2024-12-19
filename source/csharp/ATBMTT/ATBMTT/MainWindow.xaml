@@ -64,7 +64,7 @@
         <TextBox x:Name="txtPublicKey" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,5,46,5" 
                  Style="{StaticResource textBoxStyle}"/>
 
-        <Button x:Name="btnluukhoa" Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2" Width="150">Lưu khóa</Button>
+
 
         <Label Grid.Row="0" Grid.Column="3"  Content="Mã hóa"
                HorizontalAlignment="Center" FontSize="30"
