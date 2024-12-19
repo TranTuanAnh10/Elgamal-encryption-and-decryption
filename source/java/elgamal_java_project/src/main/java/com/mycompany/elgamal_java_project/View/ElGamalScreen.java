@@ -146,7 +146,7 @@ public class ElGamalScreen {
         textArea = new JTextArea(3, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        encryptArea.setLineWrap(true); 
+        textArea.setLineWrap(true); 
         JScrollPane textAreaScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         gbc.gridx = 1;
         gbc.gridy = 2;
