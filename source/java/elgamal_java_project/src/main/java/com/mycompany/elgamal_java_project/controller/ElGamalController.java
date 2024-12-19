@@ -9,6 +9,7 @@ import com.mycompany.elgamal_java_project.model.PublicKeyModal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 
 public class ElGamalController {
     private ElGamalScreen view;
@@ -42,8 +43,17 @@ public class ElGamalController {
         public void actionPerformed(ActionEvent e) {
             // Xử lý khi nhấn Create Key
             System.out.println("Create Key");
-            ElGamalKey key = keyGenerator.GenerateKey();
-            view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+            String pText = view.getPInput();
+            String aText = view.getAInput();
+            BigInteger p = new BigInteger(pText);
+            BigInteger a = new BigInteger(aText);
+            ElGamalKey key = keyGenerator.GenerateKey(p, a);
+            if(key == null){
+                view.showMessage("Create Key Fail");
+            }
+            else{
+                view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+            }
         }
     }
 
@@ -54,6 +64,8 @@ public class ElGamalController {
             // Xử lý khi nhấn Random Key
             System.out.println("Random Key");
             ElGamalKey key =  keyGenerator.GenerateKey();
+            view.setAInput(key.getA().toString());
+            view.setPInput(key.getP().toString());
             view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
         }
     }

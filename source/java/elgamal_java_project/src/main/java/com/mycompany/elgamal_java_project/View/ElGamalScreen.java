@@ -16,6 +16,10 @@ public class ElGamalScreen {
     private static JTextField publicKeyInput;
     private static JTextArea textArea;
     private static JTextArea encryptArea;
+    private static JTextArea decryptArea;
+    private static JTextField pField;   
+    private static JTextField aField;
+
 
 
 
@@ -79,7 +83,9 @@ public class ElGamalScreen {
         JTextArea textArea = new JTextArea(3, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        JScrollPane textAreaScrollPane = new JScrollPane(textArea);
+        textArea.setLineWrap(true); 
+        JScrollPane textAreaScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         gbc.gridx = 1;
         gbc.gridy = 2;
         panel.add(textAreaScrollPane, gbc);
@@ -95,9 +101,11 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(bLabel, gbc);
 
-        JTextArea ansArea = new JTextArea(3, 20);
-        ansArea.setEditable(false);
-        JScrollPane ansAreaScrollPane = new JScrollPane(ansArea);
+        decryptArea = new JTextArea(5, 20);
+        decryptArea.setEditable(false);
+        decryptArea.setLineWrap(true); 
+        decryptArea.setWrapStyleWord(true);
+        JScrollPane ansAreaScrollPane = new JScrollPane(decryptArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         gbc.gridx = 1;
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
@@ -138,7 +146,8 @@ public class ElGamalScreen {
         textArea = new JTextArea(3, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        JScrollPane textAreaScrollPane = new JScrollPane(textArea);
+        encryptArea.setLineWrap(true); 
+        JScrollPane textAreaScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         gbc.gridx = 1;
         gbc.gridy = 2;
         panel.add(textAreaScrollPane, gbc);
@@ -187,7 +196,7 @@ public class ElGamalScreen {
         gbc.gridwidth = 1;
         panel.add(pLabel, gbc);
 
-        JTextField pField = new JTextField();
+        pField = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
         panel.add(pField, gbc);
@@ -197,7 +206,7 @@ public class ElGamalScreen {
         gbc.gridy = 2;
         panel.add(aLabel, gbc);
 
-        JTextField aField = new JTextField();
+        aField = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 2;
         panel.add(aField, gbc);
@@ -249,6 +258,19 @@ public class ElGamalScreen {
         System.out.println("updateKeys");
         privateKeyArea.setText(privateKey);
         publicKeyArea.setText(publicKey.ToString());
+    }
+    public String getPInput(){
+        return pField.getText();
+    }
+    public String getAInput(){
+        return aField.getText();
+    }
+    
+    public void setPInput(String p){
+       pField.setText(p);
+    }
+    public void setAInput(String a){
+        aField.setText(a);
     }
     
     public String getPublicKey(){
