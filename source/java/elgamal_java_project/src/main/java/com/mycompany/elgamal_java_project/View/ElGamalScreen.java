@@ -14,11 +14,13 @@ public class ElGamalScreen {
     private static JTextArea privateKeyArea;
     private static JTextArea publicKeyArea;
     private static JTextField publicKeyInput;
+    private static JTextField privateKeyInput;
     private static JTextArea textArea;
     private static JTextArea encryptArea;
     private static JTextArea decryptArea;
     private static JTextField pField;   
     private static JTextField aField;
+    private static JTextArea cipherTextInput;
 
 
 
@@ -70,21 +72,21 @@ public class ElGamalScreen {
         gbc.gridwidth = 1;
         panel.add(pLabel, gbc);
 
-        JTextField pField = new JTextField();
+        privateKeyInput = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
-        panel.add(pField, gbc);
+        panel.add(privateKeyInput, gbc);
 
         JLabel aLabel = new JLabel("Văn bản cần giải mã:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         panel.add(aLabel, gbc);
 
-        JTextArea textArea = new JTextArea(3, 20);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setLineWrap(true); 
-        JScrollPane textAreaScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        cipherTextInput = new JTextArea(5, 40);
+        cipherTextInput.setLineWrap(true);
+        cipherTextInput.setWrapStyleWord(true);
+        cipherTextInput.setLineWrap(true); 
+        JScrollPane textAreaScrollPane = new JScrollPane(cipherTextInput, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -101,7 +103,7 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(bLabel, gbc);
 
-        decryptArea = new JTextArea(5, 20);
+        decryptArea = new JTextArea(5, 40);
         decryptArea.setEditable(false);
         decryptArea.setLineWrap(true); 
         decryptArea.setWrapStyleWord(true);
@@ -143,7 +145,7 @@ public class ElGamalScreen {
         gbc.gridy = 2;
         panel.add(aLabel, gbc);
 
-        textArea = new JTextArea(3, 20);
+        textArea = new JTextArea(5, 40);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true); 
@@ -163,7 +165,7 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(bLabel, gbc);
 
-        encryptArea = new JTextArea(5, 20);
+        encryptArea = new JTextArea(5, 40);
         encryptArea.setEditable(false);
         encryptArea.setLineWrap(true); 
         encryptArea.setWrapStyleWord(true);
@@ -289,7 +291,16 @@ public class ElGamalScreen {
     public void setCipherText(String cipherText) {
         encryptArea.setText(cipherText); 
     }
-
+    
+    public String GetPrivateKey(){
+        return privateKeyInput.getText();
+    }
+    public String GetCipherText(){
+        return cipherTextInput.getText();
+    }
+    public void setPlainText(String plainText){
+        decryptArea.setText(plainText);
+    }
 
     // Các phương thức setter và getter cho các nút
     public void addSaveKeyListener(java.awt.event.ActionListener listener) {

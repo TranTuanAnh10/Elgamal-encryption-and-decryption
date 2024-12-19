@@ -1,5 +1,6 @@
 package com.mycompany.elgamal_java_project.controller;
 
+import com.mycompany.elgamal_java_project.model.ElGamalDecryptor;
 import com.mycompany.elgamal_java_project.model.ElGamalKey;
 import com.mycompany.elgamal_java_project.model.ElGamalKeyGenerator;
 import com.mycompany.elgamal_java_project.model.ElGamalEncryptor;
@@ -43,17 +44,22 @@ public class ElGamalController {
         public void actionPerformed(ActionEvent e) {
             // Xử lý khi nhấn Create Key
             System.out.println("Create Key");
-            String pText = view.getPInput();
-            String aText = view.getAInput();
-            BigInteger p = new BigInteger(pText);
-            BigInteger a = new BigInteger(aText);
-            ElGamalKey key = keyGenerator.GenerateKey(p, a);
-            if(key == null){
-                view.showMessage("Create Key Fail");
+            try {
+               String pText = view.getPInput();
+                String aText = view.getAInput();
+                BigInteger p = new BigInteger(pText);
+                BigInteger a = new BigInteger(aText);
+                ElGamalKey key = keyGenerator.GenerateKey(p, a);
+                if(key == null){
+                    view.showMessage("Create Key Fail");
+                }
+                else{
+                    view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+                } 
+            } catch (IllegalArgumentException ex) {
+                view.showMessage(ex.getMessage());
             }
-            else{
-                view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
-            }
+            
         }
     }
 
@@ -76,15 +82,11 @@ public class ElGamalController {
         public void actionPerformed(ActionEvent e) {
             // Xử lý khi nhấn EncryptButton
             System.out.println("EncryptButton");
-                    System.out.println("Create Key");
-            ElGamalKey key = keyGenerator.GenerateKey();
-            currentKey = key;  // Gán currentKey
-            view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
 
             try {
                 // Lấy khóa công khai từ giao diện
                 String publicKeyInput = view.getPublicKey();
-                PublicKeyModal publicKey = currentKey.getPublicKey();
+                PublicKeyModal publicKey = new PublicKeyModal(publicKeyInput);
 
                 // Lấy thông điệp từ giao diện
                 String message = view.getPlainText();
@@ -109,9 +111,23 @@ public class ElGamalController {
     class DecodeButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Xử lý khi nhấn DecodeButton
             System.out.println("DecodeButton");
-
+            try {
+                // get private key from ui
+                String privateKeyInput = view.GetPrivateKey();
+                BigInteger p = keyGenerator.getKey().getP();
+                BigInteger publicKey = new BigInteger(privateKeyInput);
+                String message = view.GetCipherText();
+                if (message.isEmpty()) {
+                    view.showMessage("Vui lòng nhập thông điệp cần giải mã.");
+                    return;
+                }
+                ElGamalDecryptor decryptor = new ElGamalDecryptor(p, publicKey);
+                String plantext = decryptor.decrypt(message);
+                view.setPlainText(plantext);
+            } catch (Exception ex) {
+                view.showMessage("Lỗi giải mã: " + ex.getMessage());
+            }
         }
     }
 }

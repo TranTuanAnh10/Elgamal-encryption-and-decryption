@@ -10,6 +10,10 @@ public class ElGamalKeyGenerator {
     private ElGamalKey elgamalKey;
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    
+    public ElGamalKey getKey() {
+        return elgamalKey;
+    }
     /**
      * Generated keys.
      *
@@ -18,8 +22,11 @@ public class ElGamalKeyGenerator {
      * @return ElGamalKey contain private key and public key
      */
     public ElGamalKey GenerateKey(BigInteger q, BigInteger a) {
-        if (!IsPrimitiveRoot(a, q) || !IsPrime(q)) {
-            return null;
+        if (!IsPrimitiveRoot(a, q)) {
+            throw new IllegalArgumentException("Giá trị a không phải phần tử nguyên thủy của p");
+        }
+        if(!IsPrime(q)){
+            throw new IllegalArgumentException("Giá trị p không phải số nguyên tố");
         }
         BigInteger x = GeneratePrivateKey(q);
         if (x.equals(BigInteger.ZERO)) { // Ensure private key is non-zero
