@@ -30,9 +30,9 @@ public class ElGamalEncryptor {
 
             // Thêm cặp (c1, c2) vào kết quả
             if (ciphertext.length() > 0) {
-                ciphertext.append(","); // Ngăn cách các cặp bằng dấu phẩy
+                ciphertext.append(";"); // Ngăn cách các cặp bằng dấu phẩy
             }
-            ciphertext.append(c1).append(":").append(c2);
+            ciphertext.append(c1).append(",").append(c2);
         }
 
         return ciphertext.toString(); // Trả về chuỗi mã hóa

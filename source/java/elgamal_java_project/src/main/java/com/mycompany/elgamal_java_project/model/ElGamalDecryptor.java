@@ -32,11 +32,11 @@ public class ElGamalDecryptor {
      * @return paintext String decrypted
      */
     public String decrypt(String ciphertext) {
-        String[] blocks = ciphertext.split(",");
+        String[] blocks = ciphertext.split(";");
         List<Byte> messageBytes = new ArrayList<>();
 
         for (String block : blocks) {
-            String[] parts = block.split(":");
+            String[] parts = block.split(",");
             BigInteger c1 = new BigInteger(parts[0]);
             BigInteger c2 = new BigInteger(parts[1]);
 
