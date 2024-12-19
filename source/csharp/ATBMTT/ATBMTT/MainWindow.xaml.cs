@@ -148,13 +148,13 @@ namespace ATBMTT
         {
             List<string> encryptedBlocks = new List<string>();
             byte[] messageBytes = Encoding.UTF8.GetBytes(message);
-            int blockSize = (int)Math.Floor(BigInteger.Log(p) / 8);
+            int blockSize = Math.Max((int)Math.Floor(BigInteger.Log(p, 256)) - 1, 1);
             int offset = 0;
-
             while (offset < messageBytes.Length)
             {
                 byte[] blockBytes = messageBytes.Skip(offset).Take(blockSize).ToArray();
-                offset += blockSize;
+                //offset += blockSize;
+                offset++;
 
                 BigInteger m = new BigInteger(blockBytes.Reverse().ToArray());
                 if (m >= p)
@@ -189,12 +189,43 @@ namespace ATBMTT
                 BigInteger m = (c2 * sInverse) % p;
 
                 byte[] blockBytes = m.ToByteArray();
+
                 Array.Reverse(blockBytes);
-                messageBytes.AddRange(blockBytes);
+                messageBytes.Add(blockBytes[0]);
             }
 
-            return Encoding.UTF8.GetString(messageBytes.ToArray());
+            return Encoding.UTF8.GetString(messageBytes.ToArray()).TrimEnd('\0');
         }
+
+        //private string DecryptLongMessage(string encryptedMessage, BigInteger p, BigInteger privateKey)
+        //{
+        //    var blocks = encryptedMessage.Split(';');
+        //    List<byte> messageBytes = new List<byte>();
+
+        //    foreach (var block in blocks)
+        //    {
+        //        if (string.IsNullOrWhiteSpace(block)) continue;
+
+        //        var parts = block.Split(',');
+        //        BigInteger c1 = BigInteger.Parse(parts[0]);
+        //        BigInteger c2 = BigInteger.Parse(parts[1]);
+
+
+        //        BigInteger s = BigInteger.ModPow(c1, privateKey, p);
+        //        BigInteger sInverse = ModInverse(s, p);
+        //        BigInteger m = (c2 * sInverse) % p;
+
+
+        //        byte[] blockBytes = m.ToByteArray();
+        //        if (blockBytes.Length > 1 && blockBytes[^1] == 0)
+        //        {
+        //            blockBytes = blockBytes.Take(blockBytes.Length - 1).ToArray();
+        //        }
+
+        //        messageBytes.AddRange(blockBytes.Reverse());
+        //    }
+        //    return Encoding.UTF8.GetString(messageBytes.ToArray()).TrimEnd('\0');
+        //}
 
         private bool IsPrime(BigInteger n)
         {
