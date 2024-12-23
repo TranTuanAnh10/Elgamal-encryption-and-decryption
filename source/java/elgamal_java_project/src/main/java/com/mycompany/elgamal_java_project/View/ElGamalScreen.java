@@ -11,6 +11,10 @@ public class ElGamalScreen {
     private static JButton randomKeyButton;
     private static JButton encryptButton;
     private static JButton decodeButton;
+    private static JButton uploadFileEncryptButton;
+    private static JButton uploadFileDecryptButton;
+    private static JButton saveFileEncryptButton;
+    private static JButton saveFileDecryptButton;
     private static JTextArea privateKeyArea;
     private static JTextArea publicKeyArea;
     private static JTextField publicKeyInput;
@@ -344,7 +348,21 @@ public class ElGamalScreen {
     public void addDecodeButtonListener(java.awt.event.ActionListener listener) {
         decodeButton.addActionListener(listener);
     }
+    
+    public void addUploadDecryptButtonListener(java.awt.event.ActionListener listener) {
+        decodeButton.addActionListener(listener);
+    }
+    public void addUploadEncryptButtonListener(java.awt.event.ActionListener listener) {
+        decodeButton.addActionListener(listener);
+    }
+    public void addSaveDecryptButtonListener(java.awt.event.ActionListener listener) {
+        decodeButton.addActionListener(listener);
+    }
+    public void addSaveEncryptButtonListener(java.awt.event.ActionListener listener) {
+        decodeButton.addActionListener(listener);
+    }
+    
     public void showEncryptedText(String encryptedText) {
-    encryptArea.setText(encryptedText);
+        encryptArea.setText(encryptedText);
     }
 }
