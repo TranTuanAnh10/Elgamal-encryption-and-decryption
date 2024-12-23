@@ -91,9 +91,14 @@ public class ElGamalScreen {
         gbc.gridx = 1;
         gbc.gridy = 2;
         panel.add(textAreaScrollPane, gbc);
+        
+        JButton uploadFileDecrypt = new JButton("Chọn file");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(uploadFileDecrypt, gbc);
 
         decodeButton = new JButton("Giải mã");
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
         panel.add(decodeButton, gbc);
@@ -111,6 +116,12 @@ public class ElGamalScreen {
         gbc.gridx = 1;
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
+        
+        JButton saveFileDecrypt = new JButton("Lưu file");
+        gbc.gridx = 1;
+        gbc.gridy = 5;
+        gbc.gridwidth = 1;
+        panel.add(saveFileDecrypt, gbc);
 
         return panel;
     }
@@ -155,10 +166,15 @@ public class ElGamalScreen {
         panel.add(textAreaScrollPane, gbc);
 
         encryptButton = new JButton("Mã hóa");
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1;
+        panel.add(encryptButton, gbc);
+        
+        JButton uploadFilePlantext = new JButton("Chọn file");
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        panel.add(encryptButton, gbc);
+        panel.add(uploadFilePlantext, gbc);
 
         JLabel bLabel = new JLabel("Kết quả:");
         gbc.gridx = 0;
@@ -174,6 +190,12 @@ public class ElGamalScreen {
         gbc.gridx = 1;
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
+        
+        JButton saveFileEncrypt = new JButton("Lưu file");
+        gbc.gridx = 1;
+        gbc.gridy = 5;
+        gbc.gridwidth = 1;
+        panel.add(saveFileEncrypt, gbc);
 
         return panel;
     }
