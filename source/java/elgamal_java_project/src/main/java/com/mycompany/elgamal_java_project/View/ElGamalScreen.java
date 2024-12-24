@@ -96,10 +96,10 @@ public class ElGamalScreen {
         gbc.gridy = 2;
         panel.add(textAreaScrollPane, gbc);
         
-        JButton uploadFileDecrypt = new JButton("Chọn file");
+        uploadFileDecryptButton = new JButton("Chọn file");
         gbc.gridx = 0;
         gbc.gridy = 3;
-        panel.add(uploadFileDecrypt, gbc);
+        panel.add(uploadFileDecryptButton, gbc);
 
         decodeButton = new JButton("Giải mã");
         gbc.gridx = 1;
@@ -121,11 +121,11 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
         
-        JButton saveFileDecrypt = new JButton("Lưu file");
+        saveFileDecryptButton = new JButton("Lưu file");
         gbc.gridx = 1;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        panel.add(saveFileDecrypt, gbc);
+        panel.add(saveFileDecryptButton, gbc);
 
         return panel;
     }
@@ -175,10 +175,10 @@ public class ElGamalScreen {
         gbc.gridwidth = 1;
         panel.add(encryptButton, gbc);
         
-        JButton uploadFilePlantext = new JButton("Chọn file");
+        uploadFileEncryptButton = new JButton("Chọn file");
         gbc.gridx = 0;
         gbc.gridy = 3;
-        panel.add(uploadFilePlantext, gbc);
+        panel.add(uploadFileEncryptButton, gbc);
 
         JLabel bLabel = new JLabel("Kết quả:");
         gbc.gridx = 0;
@@ -195,11 +195,11 @@ public class ElGamalScreen {
         gbc.gridy = 4;
         panel.add(ansAreaScrollPane, gbc);
         
-        JButton saveFileEncrypt = new JButton("Lưu file");
+        saveFileEncryptButton = new JButton("Lưu file");
         gbc.gridx = 1;
         gbc.gridy = 5;
         gbc.gridwidth = 1;
-        panel.add(saveFileEncrypt, gbc);
+        panel.add(saveFileEncryptButton, gbc);
 
         return panel;
     }
@@ -350,16 +350,16 @@ public class ElGamalScreen {
     }
     
     public void addUploadDecryptButtonListener(java.awt.event.ActionListener listener) {
-        decodeButton.addActionListener(listener);
+        uploadFileDecryptButton.addActionListener(listener);
     }
     public void addUploadEncryptButtonListener(java.awt.event.ActionListener listener) {
-        decodeButton.addActionListener(listener);
+        uploadFileEncryptButton.addActionListener(listener);
     }
     public void addSaveDecryptButtonListener(java.awt.event.ActionListener listener) {
-        decodeButton.addActionListener(listener);
+        saveFileDecryptButton.addActionListener(listener);
     }
     public void addSaveEncryptButtonListener(java.awt.event.ActionListener listener) {
-        decodeButton.addActionListener(listener);
+        saveFileEncryptButton.addActionListener(listener);
     }
     
     public void showEncryptedText(String encryptedText) {

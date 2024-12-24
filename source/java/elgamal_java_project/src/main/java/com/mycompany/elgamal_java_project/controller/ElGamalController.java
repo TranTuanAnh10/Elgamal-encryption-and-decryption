@@ -6,6 +6,7 @@ import com.mycompany.elgamal_java_project.model.ElGamalKeyGenerator;
 import com.mycompany.elgamal_java_project.model.ElGamalEncryptor;
 import com.mycompany.elgamal_java_project.view.ElGamalScreen;
 import com.mycompany.elgamal_java_project.model.PublicKeyModal;
+import com.mycompany.elgamal_java_project.utils.Utils;
 
 
 import java.awt.event.ActionEvent;
@@ -25,7 +26,13 @@ public class ElGamalController {
         this.view.addCreateKeyListener(new CreateKeyListener());
         this.view.addRandomKeyListener(new RandomKeyListener());
         this.view.addEncryptButtonListener(new EncryptButtonListener());
-        this.view.addDecodeButtonListener(new DecodeButtonListener());
+        this.view.addDecodeButtonListener(new DecodeButtonListener());      
+        this.view.addUploadEncryptButtonListener(new UploadEncryptButtonListener());
+        this.view.addUploadDecryptButtonListener(new UploadDecryptButtonListener());
+        this.view.addSaveEncryptButtonListener(new SaveEncryptButtonListener());   
+        this.view.addSaveDecryptButtonListener(new SaveDecryptButtonListener());
+
+
         keyGenerator = new ElGamalKeyGenerator();
     }
 
@@ -47,14 +54,23 @@ public class ElGamalController {
             try {
                String pText = view.getPInput();
                 String aText = view.getAInput();
+                if(pText == ""){
+                     view.showMessage("Vui lòng nhập p");
+                     return;
+                }
+                
+                if(aText == ""){
+                     
+                }
                 BigInteger p = new BigInteger(pText);
                 BigInteger a = new BigInteger(aText);
                 ElGamalKey key = keyGenerator.GenerateKey(p, a);
                 if(key == null){
-                    view.showMessage("Create Key Fail");
+                    view.showMessage("Tạo khóa thất bại");
                 }
                 else{
                     view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+                    view.showMessage("Tạo khóa thành công");
                 } 
             } catch (IllegalArgumentException ex) {
                 view.showMessage(ex.getMessage());
@@ -68,11 +84,16 @@ public class ElGamalController {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Xử lý khi nhấn Random Key
-            System.out.println("Random Key");
-            ElGamalKey key =  keyGenerator.GenerateKey();
-            view.setAInput(key.getA().toString());
-            view.setPInput(key.getP().toString());
-            view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+            try {
+                System.out.println("Random Key");
+                ElGamalKey key =  keyGenerator.GenerateKey();
+                view.setAInput(key.getA().toString());
+                view.setPInput(key.getP().toString());
+                view.updateKeys(key.getPrivateKey().toString(), key.getPublicKey());
+                view.showMessage("Tạo khóa thành công");
+            } catch (IllegalArgumentException ex) {
+                view.showMessage(ex.getMessage());
+            }
         }
     }
 
@@ -128,6 +149,55 @@ public class ElGamalController {
             } catch (Exception ex) {
                 view.showMessage("Lỗi giải mã: " + ex.getMessage());
             }
+        }
+    }
+    
+    class UploadEncryptButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                System.out.println("UploadEncryptButtonListener start");
+                String txt = Utils.GetFile();
+                System.out.println("UploadEncryptButtonListener: " + txt);
+            } catch (IllegalArgumentException ex) {
+                view.showMessage(ex.getMessage());
+            }
+        }
+    }
+    
+    class UploadDecryptButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("UploadDecryptButtonListener");
+            try {
+                String txt = Utils.GetFile();
+                System.out.println("UploadDecryptButtonListener: " + txt);
+            } catch (IllegalArgumentException ex) {
+                view.showMessage(ex.getMessage());
+            }
+        }
+    }
+    
+    class SaveEncryptButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("SaveEncryptButtonListener");
+            try {
+                String result = Utils.SaveFile("aaaaa");
+                if(result != null){
+                    view.showMessage(result);
+                }
+            } catch (IllegalArgumentException ex) {
+                view.showMessage(ex.getMessage());
+            }
+        }
+    }
+    
+    class SaveDecryptButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("SaveDecryptButtonListener");
+            Utils.SaveFile("aaaaa");
         }
     }
 }
