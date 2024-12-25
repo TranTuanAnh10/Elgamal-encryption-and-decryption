@@ -123,6 +123,7 @@ public class ElGamalController {
             // Hiển thị kết quả mã hóa
             view.c1CipherText.setText(c1);
             view.c2CipherText.setText(c2);
+            view.showMessage("Mã hóa thành công");
         } catch (Exception ex) {
             view.showMessage("Lỗi mã hóa: " + ex.getMessage());
         }
@@ -148,6 +149,7 @@ public class ElGamalController {
             ElGamalDecryptor decryptor = new ElGamalDecryptor(p, publicKey);
             String plantext = decryptor.decrypt(messageC1, messageC2);
             view.resultDecrypt.setText(plantext);
+            view.showMessage("Giải mã thành công");
         } catch (Exception ex) {
             view.showMessage("Lỗi giải mã: " + ex.getMessage());
         }
