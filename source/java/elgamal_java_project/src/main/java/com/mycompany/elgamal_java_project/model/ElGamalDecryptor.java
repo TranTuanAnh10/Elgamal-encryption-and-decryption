@@ -4,9 +4,12 @@
  */
 package com.mycompany.elgamal_java_project.model;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -31,31 +34,49 @@ public class ElGamalDecryptor {
      * @param ciphertext An array containing the cipher text: {c1, c2}.
      * @return paintext String decrypted
      */
-    public String decrypt(String ciphertext) {
-        String[] blocks = ciphertext.split(";");
-        List<Byte> messageBytes = new ArrayList<>();
+    public String decrypt(String c1String, String c2String) {
+        // Tách chuỗi c1 và c2 thành mảng
+        
+        String[] c1Blocks = c1String.split(",");
+        String[] c2Blocks = c2String.split(",");
 
-        for (String block : blocks) {
-            String[] parts = block.split(",");
-            BigInteger c1 = new BigInteger(parts[0]);
-            BigInteger c2 = new BigInteger(parts[1]);
+        if (c1Blocks.length != c2Blocks.length) {
+            throw new IllegalArgumentException("Văn bản đã bị thay đổi");
+        }
 
+        ByteArrayOutputStream messageBytes = new ByteArrayOutputStream();
+
+        // Duyệt qua các cặp giá trị c1 và c2
+        for (int i = 0; i < c1Blocks.length; i++) {
+            // Chuyển đổi c1 và c2 từ chuỗi thành BigInteger
+            BigInteger c1 = new BigInteger(c1Blocks[i].trim());
+            BigInteger c2 = new BigInteger(c2Blocks[i].trim());
+
+            // Tính toán s và sInverse
             BigInteger s = c1.modPow(privateKey, p);
-            BigInteger sInverse = modInverse(s, p);
+            BigInteger sInverse = s.modInverse(p);
+
+            // Tính toán thông điệp m
             BigInteger m = c2.multiply(sInverse).mod(p);
 
+            // Chuyển đổi m thành byte[] và thêm vào thông điệp
             byte[] blockBytes = m.toByteArray();
-            reverseArray(blockBytes);
-            for (byte b : blockBytes) {
-                messageBytes.add(b);
+
+            // Nếu byte đầu tiên là padding (do BigInteger thêm vào), loại bỏ nó
+            if (blockBytes.length > 1 && blockBytes[0] == 0) {
+                blockBytes = Arrays.copyOfRange(blockBytes, 1, blockBytes.length);
+            }
+
+            try {
+                // Ghi trực tiếp vào ByteArrayOutputStream
+                messageBytes.write(blockBytes);
+            } catch (IOException e) {
+                throw new IllegalArgumentException("Lỗi khi ghi byte vào thông điệp.", e);
             }
         }
-        byte[] resultBytes = new byte[messageBytes.size()];
-        for (int i = 0; i < messageBytes.size(); i++) {
-            resultBytes[i] = messageBytes.get(i);
-        }
 
-        return new String(resultBytes, StandardCharsets.UTF_8);
+        // Trả về chuỗi thông điệp được giải mã
+        return new String(messageBytes.toByteArray(), StandardCharsets.UTF_8);
     }
 
     private void reverseArray(byte[] array) {

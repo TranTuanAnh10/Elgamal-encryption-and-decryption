@@ -1,0 +1,3 @@
+ElGamal encryption is probabilistic, meaning that a single plaintext can be encrypted to many possible ciphertexts, with the consequence that a general ElGamal encryption produces a 1:2 expansion in size from plaintext to ciphertext.
+
+Encryption under ElGamal requires two exponentiations; however, these exponentiations are independent of the message and can be computed ahead of time if needed. Decryption requires one exponentiation and one computation of a group inverse, which can, however, be easily combined into just one exponentiation.

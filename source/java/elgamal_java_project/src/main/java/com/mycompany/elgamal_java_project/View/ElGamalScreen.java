@@ -33,178 +33,24 @@ public class ElGamalScreen {
         // Tạo khung chính
         JFrame frame = new JFrame("ElGamal Encryption & Decryption");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(Utils.FRAME_WIDTH, Utils.FRAME_HEIGHT); // Đặt kích thước cửa sổ
-        frame.setLayout(new BorderLayout(10, 10)); // Sử dụng BorderLayout để chia cửa sổ thành 5 khu vực
+        frame.setSize(Utils.FRAME_WIDTH, Utils.FRAME_HEIGHT);
+        frame.setLayout(new GridLayout(1, 3));
 
         // Tạo các panel cho mã hóa, giải mã và tạo khóa
-        JPanel decryptionPanel = createDecryptionPanel();   // Panel giải mã
-        JPanel encryptionPanel = createEncryptionPanel();   // Panel mã hóa
-        JPanel generateKeyPanel = createGenerateKeyPanel(); // Panel tạo khóa
+        JPanel generateKeyPanel = createGenerateKeyPanel();
+        JPanel encryptionPanel = createEncryptionPanel();
+        JPanel decryptionPanel = createDecryptionPanel();
 
-//        generateKeyPanel.get
-        
-        JPanel rightPanel = new JPanel(new BorderLayout(10, 10));
-        rightPanel.add(encryptionPanel, BorderLayout.NORTH); // Mã hóa bên trên
-        rightPanel.add(decryptionPanel, BorderLayout.CENTER); // Giải mã bên dưới
-
-        // Thêm các panel vào các khu vực của BorderLayout
-        frame.add(generateKeyPanel, BorderLayout.WEST);     // West: Tạo khóa
-        frame.add(rightPanel, BorderLayout.CENTER); 
+        // Thêm các panel vào khung
+        frame.add(generateKeyPanel);
+        frame.add(encryptionPanel);
+        frame.add(decryptionPanel);
 
         // Hiển thị khung
-        frame.setLocationRelativeTo(null); // Hiển thị cửa sổ ở giữa màn hình
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-    // Phương thức tạo JPanel cho giải mã
-    private static JPanel createDecryptionPanel() {
-        JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        JLabel titleLabel = new JLabel("Giải mã", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        panel.add(titleLabel, gbc);
-
-        JLabel pLabel = new JLabel("Khoá bí mật:");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        panel.add(pLabel, gbc);
-
-        privateKeyInput = new JTextField();
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(privateKeyInput, gbc);
-
-        JLabel aLabel = new JLabel("Văn bản cần giải mã:");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        panel.add(aLabel, gbc);
-
-        cipherTextInput = new JTextArea(5, 40);
-        cipherTextInput.setLineWrap(true);
-        cipherTextInput.setWrapStyleWord(true);
-        cipherTextInput.setLineWrap(true); 
-        JScrollPane textAreaScrollPane = new JScrollPane(cipherTextInput, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        panel.add(textAreaScrollPane, gbc);
-        
-        uploadFileDecryptButton = new JButton("Chọn file");
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        panel.add(uploadFileDecryptButton, gbc);
-
-        decodeButton = new JButton("Giải mã");
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        panel.add(decodeButton, gbc);
-
-        JLabel bLabel = new JLabel("Kết quả:");
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        panel.add(bLabel, gbc);
-
-        decryptArea = new JTextArea(5, 40);
-        decryptArea.setEditable(false);
-        decryptArea.setLineWrap(true); 
-        decryptArea.setWrapStyleWord(true);
-        JScrollPane ansAreaScrollPane = new JScrollPane(decryptArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        gbc.gridx = 1;
-        gbc.gridy = 4;
-        panel.add(ansAreaScrollPane, gbc);
-        
-        saveFileDecryptButton = new JButton("Lưu file");
-        gbc.gridx = 1;
-        gbc.gridy = 5;
-        gbc.gridwidth = 1;
-        panel.add(saveFileDecryptButton, gbc);
-
-        return panel;
-    }
-
-    // Phương thức tạo JPanel cho mã hóa
-    private static JPanel createEncryptionPanel() {
-        JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-
-        JLabel titleLabel = new JLabel("Mã hóa", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        panel.add(titleLabel, gbc);
-
-        JLabel pLabel = new JLabel("Khoá công khai:");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        panel.add(pLabel, gbc);
-
-        publicKeyInput = new JTextField();
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(publicKeyInput, gbc);
-
-        JLabel aLabel = new JLabel("Văn bản cần mã hóa:");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        panel.add(aLabel, gbc);
-
-        textArea = new JTextArea(5, 40);
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setLineWrap(true); 
-        JScrollPane textAreaScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        panel.add(textAreaScrollPane, gbc);
-
-        encryptButton = new JButton("Mã hóa");
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.gridwidth = 1;
-        panel.add(encryptButton, gbc);
-        
-        uploadFileEncryptButton = new JButton("Chọn file");
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        panel.add(uploadFileEncryptButton, gbc);
-
-        JLabel bLabel = new JLabel("Kết quả:");
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        panel.add(bLabel, gbc);
-
-        encryptArea = new JTextArea(5, 40);
-        encryptArea.setEditable(false);
-        encryptArea.setLineWrap(true); 
-        encryptArea.setWrapStyleWord(true);
-        JScrollPane ansAreaScrollPane = new JScrollPane(encryptArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
-        gbc.gridx = 1;
-        gbc.gridy = 4;
-        panel.add(ansAreaScrollPane, gbc);
-        
-        saveFileEncryptButton = new JButton("Lưu file");
-        gbc.gridx = 1;
-        gbc.gridy = 5;
-        gbc.gridwidth = 1;
-        panel.add(saveFileEncryptButton, gbc);
-
-        return panel;
-    }
-
-    // Phương thức tạo JPanel cho tạo khóa
     private static JPanel createGenerateKeyPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -221,7 +67,6 @@ public class ElGamalScreen {
         JLabel pLabel = new JLabel("Số nguyên tố p:");
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.gridwidth = 1;
         panel.add(pLabel, gbc);
 
         pField = new JTextField();
@@ -229,7 +74,7 @@ public class ElGamalScreen {
         gbc.gridy = 1;
         panel.add(pField, gbc);
 
-        JLabel aLabel = new JLabel("Phần tử nguyên thủy của a:");
+        JLabel aLabel = new JLabel("Phần tử nguyên thủy a:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         panel.add(aLabel, gbc);
@@ -242,41 +87,135 @@ public class ElGamalScreen {
         createKeyButton = new JButton("Tạo khóa");
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 1;
         panel.add(createKeyButton, gbc);
 
-        randomKeyButton = new JButton("Tạo khóa ngẫu nhiên");
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        panel.add(randomKeyButton, gbc);
+        return panel;
+    }
 
-        JLabel privateKeyLabel = new JLabel("Khóa bí mật:");
+    private static JPanel createEncryptionPanel() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel titleLabel = new JLabel("Mã hóa", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridx = 0;
-        gbc.gridy = 4;
-        panel.add(privateKeyLabel, gbc);
-
-        privateKeyArea = new JTextArea(3, 20);  
-        privateKeyArea.setEditable(false);
-        gbc.gridx = 1;
-        gbc.gridy = 4;
-        panel.add(new JScrollPane(privateKeyArea), gbc);
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        panel.add(titleLabel, gbc);
 
         JLabel publicKeyLabel = new JLabel("Khóa công khai:");
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 1;
         panel.add(publicKeyLabel, gbc);
 
-        publicKeyArea = new JTextArea(3, 20);  
-        publicKeyArea.setEditable(false);
+        publicKeyInput = new JTextField();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(publicKeyInput, gbc);
+
+        JLabel messageLabel = new JLabel("Văn bản cần mã hóa:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(messageLabel, gbc);
+
+        textArea = new JTextArea(5, 20);
+        JScrollPane textAreaScrollPane = new JScrollPane(textArea);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(textAreaScrollPane, gbc);
+
+        uploadFileEncryptButton = new JButton("Chọn file");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(uploadFileEncryptButton, gbc);
+
+        encryptButton = new JButton("Mã hóa");
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        panel.add(encryptButton, gbc);
+
+        JLabel resultLabel = new JLabel("Kết quả:");
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(resultLabel, gbc);
+
+        encryptArea = new JTextArea(5, 20);
+        encryptArea.setEditable(false);
+        JScrollPane encryptAreaScrollPane = new JScrollPane(encryptArea);
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        panel.add(encryptAreaScrollPane, gbc);
+
+        saveFileEncryptButton = new JButton("Lưu file");
         gbc.gridx = 1;
         gbc.gridy = 5;
-        panel.add(new JScrollPane(publicKeyArea), gbc);
+        panel.add(saveFileEncryptButton, gbc);
 
-//        saveKeyButton = new JButton("Lưu khóa");
-//        gbc.gridx = 0;
-//        gbc.gridy = 6;
-//        gbc.gridwidth = 2;
-//        panel.add(saveKeyButton, gbc);
+        return panel;
+    }
+
+    private static JPanel createDecryptionPanel() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel titleLabel = new JLabel("Giải mã", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        panel.add(titleLabel, gbc);
+
+        JLabel privateKeyLabel = new JLabel("Khóa bí mật:");
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(privateKeyLabel, gbc);
+
+        JTextField privateKeyInput = new JTextField();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(privateKeyInput, gbc);
+
+        JLabel cipherTextLabel = new JLabel("Văn bản cần giải mã:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(cipherTextLabel, gbc);
+
+        cipherTextInput = new JTextArea(5, 20);
+        JScrollPane cipherTextAreaScrollPane = new JScrollPane(cipherTextInput);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(cipherTextAreaScrollPane, gbc);
+
+        uploadFileDecryptButton = new JButton("Chọn file");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panel.add(uploadFileDecryptButton, gbc);
+
+        decodeButton = new JButton("Giải mã");
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        panel.add(decodeButton, gbc);
+
+        JLabel decryptedResultLabel = new JLabel("Kết quả:");
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(decryptedResultLabel, gbc);
+
+        decryptArea = new JTextArea(5, 20);
+        decryptArea.setEditable(false);
+        JScrollPane decryptAreaScrollPane = new JScrollPane(decryptArea);
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        panel.add(decryptAreaScrollPane, gbc);
+
+        saveFileDecryptButton = new JButton("Lưu file");
+        gbc.gridx = 1;
+        gbc.gridy = 5;
+        panel.add(saveFileDecryptButton, gbc);
 
         return panel;
     }

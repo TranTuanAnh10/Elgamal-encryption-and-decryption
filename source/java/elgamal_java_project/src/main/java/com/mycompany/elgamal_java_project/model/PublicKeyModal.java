@@ -9,8 +9,8 @@ public class PublicKeyModal {
     public final BigInteger y; 
     
     // Constructor
-    public PublicKeyModal(BigInteger _q, BigInteger _a, BigInteger _y){
-        this.p = _q;
+    public PublicKeyModal(BigInteger _p, BigInteger _a, BigInteger _y){
+        this.p = _p;
         this.a = _a;
         this.y = _y;
     }

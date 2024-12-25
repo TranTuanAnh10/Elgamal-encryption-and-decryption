@@ -179,7 +179,8 @@ public class Utils {
         if (saveReturnValue == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             String fileName = fileToSave.getName();
-            if(!fileName.endsWith(".txt") || !fileName.endsWith(".doc") || !fileName.endsWith(".docs")){
+            System.out.println("fileName: " + fileName);
+            if(!fileName.endsWith(".txt") && !fileName.endsWith(".doc") && !fileName.endsWith(".docs")){
                 fileToSave = new File(fileToSave.getParentFile(), fileName + ".txt");
             }
             try (FileWriter fileWriter = new FileWriter(fileToSave)) {
