@@ -6,10 +6,21 @@
     <Application.Resources>
         <Style x:Key="labelStyle" TargetType="Label" >
             <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="Foreground" Value="Green" />
         </Style>
 
         <Style x:Key="textBoxStyle" TargetType="TextBox" >
             <Setter Property="Margin" Value="10,15,0,0" />
+        </Style>
+        <ControlTemplate x:Key="buttonTemplate" TargetType="Button" >
+            <Grid>
+                <Rectangle Fill="Yellow" />
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+        <Style x:Key="buttonStyle" TargetType="Button" >
+            <Setter Property="Foreground" Value="Green" />
+            <Setter Property="FontWeight" Value="Bold" />
         </Style>
     </Application.Resources>
 </Application>
