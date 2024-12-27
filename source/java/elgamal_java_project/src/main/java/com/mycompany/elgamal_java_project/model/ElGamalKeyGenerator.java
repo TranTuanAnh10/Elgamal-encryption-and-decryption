@@ -3,8 +3,6 @@ package com.mycompany.elgamal_java_project.model;
 import com.mycompany.elgamal_java_project.utils.Utils;
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ElGamalKeyGenerator {
 
@@ -18,7 +16,7 @@ public class ElGamalKeyGenerator {
     /**
      * Generated keys.
      *
-     * @param q Prime modulus
+     * @param p Prime modulus
      * @param a Primitive root
      * @return ElGamalKey contain private key and public key
      */
@@ -29,8 +27,10 @@ public class ElGamalKeyGenerator {
         if(!Utils.IsPrime(p)){
             throw new IllegalArgumentException("Giá trị p không phải số nguyên tố");
         }
-        
         if(p.compareTo(BigInteger.valueOf(2)) <= 0){
+            throw new IllegalArgumentException("Vui lòng nhập số p lớn");
+        }
+        if(p.compareTo(BigInteger.valueOf(1)) <= 0){
             throw new IllegalArgumentException("Vui lòng nhập số p lớn");
         }
             

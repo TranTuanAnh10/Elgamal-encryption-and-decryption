@@ -55,14 +55,19 @@ public class ElGamalController {
         try {
            String pText = view.pInputKey.getText();
             String aText = view.aInputKey.getText();
-            if(pText == ""){
+            System.out.println("Create Key p: " + pText);            
+            System.out.println("Create Key a: " + aText);
+
+            if(pText.isBlank() || pText.isEmpty()){
                  view.showMessage("Vui lòng nhập p");
                  return;
             }
 
-            if(aText == ""){
-
+            if(aText.isBlank() || aText.isEmpty()){
+                view.showMessage("Vui lòng nhập a");
+                return;
             }
+            System.out.println("Create Key a: " + aText);
             BigInteger p = new BigInteger(pText);
             BigInteger a = new BigInteger(aText);
             ElGamalKey key = keyGenerator.GenerateKey(p, a);
@@ -105,6 +110,19 @@ public class ElGamalController {
             String publicKeyInput = view.yInputEncypt.getText();
             String p = view.pInputEncypt.getText();
             String a = view.aInputEncrypt.getText();
+            
+            if(publicKeyInput.isBlank() || publicKeyInput.isEmpty()){
+                view.showMessage("Vui lòng nhập p");
+                return;
+            }
+            if(p.isBlank() || p.isEmpty()){
+                view.showMessage("Vui lòng nhập p");
+                return;
+            }
+            if(a.isBlank() || a.isEmpty()){
+                view.showMessage("Vui lòng nhập a");
+                return;
+            }
 
             PublicKeyModal publicKey = new PublicKeyModal(new BigInteger(p), new BigInteger(a), new BigInteger(publicKeyInput));
 
@@ -137,16 +155,23 @@ public class ElGamalController {
         try {
             // get private key from ui
             String privateKeyInput = view.privateKeyDecrypt.getText();
-
+            if(keyGenerator == null || keyGenerator.getKey() == null || keyGenerator.getKey().getP() == null){
+                view.showMessage("Bạn chưa tạo khóa");
+                return;
+            }
             BigInteger p = keyGenerator.getKey().getP();
-            BigInteger publicKey = new BigInteger(privateKeyInput);
+            if(privateKeyInput.isBlank() || privateKeyInput.isEmpty()){
+                view.showMessage("Vui lòng nhập khóa bí mật");
+                return;
+            }
+            BigInteger privateKey = new BigInteger(privateKeyInput);
             String messageC1 = view.c1CipherTextDecrypt.getText();   
             String messageC2 = view.c2CipherTextDecrypt.getText();
             if (messageC1.isEmpty() || messageC2.isEmpty()) {
                 view.showMessage("Vui lòng nhập thông điệp cần giải mã.");
                 return;
             }
-            ElGamalDecryptor decryptor = new ElGamalDecryptor(p, publicKey);
+            ElGamalDecryptor decryptor = new ElGamalDecryptor(p, privateKey);
             String plantext = decryptor.decrypt(messageC1, messageC2);
             view.resultDecrypt.setText(plantext);
             view.showMessage("Giải mã thành công");
