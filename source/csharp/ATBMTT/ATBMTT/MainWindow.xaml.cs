@@ -105,6 +105,16 @@ namespace ATBMTT
         {
             try
             {
+                if ( string.IsNullOrWhiteSpace(txtMessage.Text) )
+                {
+                    MessageBox.Show("Vui lòng nhập văn bản cần mã hóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if ( string.IsNullOrWhiteSpace(txtP.Text) || string.IsNullOrWhiteSpace(txtA.Text) || string.IsNullOrWhiteSpace(txtY.Text) )
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ tham số (p, a, y)!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
                 BigInteger p = BigInteger.Parse(txtP.Text);
                 BigInteger a = BigInteger.Parse(txtA.Text);
@@ -115,6 +125,11 @@ namespace ATBMTT
 
                 if ( encryptedBlocks != null )
                 {
+                    if ( string.IsNullOrWhiteSpace(txtMessage.Text) )
+                    {
+                        MessageBox.Show("Vui lòng nhập văn bản cần mã hóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
                     txtEncrypted1.Text = string.Join(";", encryptedBlocks.Select(block => block.Item1.ToString()));
                     txtEncrypted2.Text = string.Join(";", encryptedBlocks.Select(block => block.Item2.ToString()));
                     MessageBox.Show("Mã hóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -161,6 +176,16 @@ namespace ATBMTT
         {
             try
             {
+                if ( string.IsNullOrWhiteSpace(txtDecrypted1.Text) || string.IsNullOrWhiteSpace(txtDecrypted2.Text) )
+                {
+                    MessageBox.Show("Vui lòng nhập dữ liệu cần giải mã (C1 và C2)!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if ( string.IsNullOrWhiteSpace(txtPrivateKey.Text) )
+                {
+                    MessageBox.Show("Vui lòng nhập khóa bí mật!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
                 BigInteger p = BigInteger.Parse(txtP.Text);
                 BigInteger privateKey = BigInteger.Parse(txtPrivateKey.Text);
