@@ -42,8 +42,8 @@
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
               "RelativeDocumentMoniker": "ATBMTT\\App.xaml",
-              "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml*",
-              "RelativeToolTip": "ATBMTT\\App.xaml*",
+              "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
+              "RelativeToolTip": "ATBMTT\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-12-18T11:09:00.003Z",
               "EditorCaption": ""
@@ -56,7 +56,7 @@
               "RelativeDocumentMoniker": "ATBMTT\\MainWindow.xaml.cs",
               "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml.cs*",
               "RelativeToolTip": "ATBMTT\\MainWindow.xaml.cs*",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAkwGwCAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAGICAAAAAAAAAAAuwHoCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T13:09:56.869Z",
               "EditorCaption": ""

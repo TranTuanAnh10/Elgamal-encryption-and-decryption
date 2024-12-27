@@ -18,7 +18,7 @@ namespace ATBMTT
     public partial class MainWindow : Window
     {
         private BigInteger p;
-        private BigInteger g;
+        private BigInteger a;
         private BigInteger privateKey;
         private BigInteger publicKey;
 
@@ -38,7 +38,7 @@ namespace ATBMTT
                 }
 
                 p = BigInteger.Parse(txtPrime.Text);
-                g = BigInteger.Parse(txtPrimitiveRoot.Text);
+                a = BigInteger.Parse(txtPrimitiveRoot.Text);
 
                 if ( !IsPrime(p) )
                 {
@@ -47,7 +47,7 @@ namespace ATBMTT
                 }
 
                 privateKey = GenerateRandomBigInteger(p - 2) + 1;
-                publicKey = BigInteger.ModPow(g, privateKey, p);
+                publicKey = BigInteger.ModPow(a, privateKey, p);
 
                 txtPrivateKey.Text = privateKey.ToString();
                 txtPublicKey.Text = publicKey.ToString();
@@ -64,12 +64,12 @@ namespace ATBMTT
             try
             {
                 p = GenerateLargePrime();
-                g = FindPrimitiveRoot(p);
+                a = FindPrimitiveRoot(p);
                 privateKey = GenerateRandomBigInteger(p - 2) + 1;
-                publicKey = BigInteger.ModPow(g, privateKey, p);
+                publicKey = BigInteger.ModPow(a, privateKey, p);
 
                 txtPrime.Text = p.ToString();
-                txtPrimitiveRoot.Text = g.ToString();
+                txtPrimitiveRoot.Text = a.ToString();
                 txtPrivateKey.Text = privateKey.ToString();
                 txtPublicKey.Text = publicKey.ToString();
                 MessageBox.Show("Khóa ngẫu nhiên đã được tạo thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -84,17 +84,17 @@ namespace ATBMTT
             try
             {
 
-                if ( p == 0 || g == 0 || publicKey == 0 )
+                if ( p == 0 || a == 0 || publicKey == 0 )
                 {
-                    MessageBox.Show("Chưa có khóa công khai để chuyển! Hãy tạo hoặc nhập khóa trước.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Chưa có khóa để chuyển! Hãy tạo hoặc nhập khóa trước.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 txtP.Text = p.ToString();
-                txtA.Text = g.ToString();
+                txtA.Text = a.ToString();
                 txtY.Text = publicKey.ToString();
                 txtPrivateKeyInput.Text = privateKey.ToString();
-                MessageBox.Show("Đã chuyển các giá trị khóa công khai thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Đã chuyển các giá trị khóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch ( Exception ex )
             {
@@ -107,11 +107,11 @@ namespace ATBMTT
             {
 
                 BigInteger p = BigInteger.Parse(txtP.Text);
-                BigInteger g = BigInteger.Parse(txtA.Text);
+                BigInteger a = BigInteger.Parse(txtA.Text);
                 BigInteger y = BigInteger.Parse(txtY.Text);
 
                 string message = txtMessage.Text;
-                var encryptedBlocks = EncryptLongMessage(message, p, g, y);
+                var encryptedBlocks = EncryptLongMessage(message, p, a, y);
 
                 if ( encryptedBlocks != null )
                 {
@@ -149,7 +149,7 @@ namespace ATBMTT
 
 
                 BigInteger k = GenerateRandomBigInteger(p - 2) + 1;
-                BigInteger c1 = BigInteger.ModPow(g, k, p);
+                BigInteger c1 = BigInteger.ModPow(a, k, p);
                 BigInteger c2 = ( m * BigInteger.ModPow(y, k, p) ) % p;
 
                 encryptedBlocks.Add((c1, c2));
@@ -249,20 +249,20 @@ namespace ATBMTT
         }
         private BigInteger FindPrimitiveRoot( BigInteger p )
         {
-            for ( BigInteger g = 2; g < p; g++ )
-                if ( IsPrimitiveRoot(g, p) )
-                    return g;
+            for ( BigInteger a = 2; a < p; a++ )
+                if ( IsPrimitiveRoot(a, p) )
+                    return a;
 
             throw new Exception("Không tìm thấy phần tử nguyên thủy.");
         }
 
-        private bool IsPrimitiveRoot( BigInteger g, BigInteger p )
+        private bool IsPrimitiveRoot( BigInteger a, BigInteger p )
         {
             BigInteger phi = p - 1;
             var factors = GetPrimeFactors(phi);
             foreach ( var factor in factors )
             {
-                if ( BigInteger.ModPow(g, phi / factor, p) == 1 )
+                if ( BigInteger.ModPow(a, phi / factor, p) == 1 )
                     return false;
             }
             return true;
@@ -616,6 +616,27 @@ namespace ATBMTT
                 txtDecrypted1.Text = $"Lỗi: {ex.Message}";
                 txtDecrypted2.Text = string.Empty;
             }
+        }
+
+        private void btnReset_Click( object sender, RoutedEventArgs e )
+        {
+            txtPrime.Clear();
+            txtPrimitiveRoot.Clear();
+            txtPrivateKey.Clear();
+            txtPublicKey.Clear();
+
+            txtP.Clear();
+            txtA.Clear();
+            txtY.Clear();
+            txtMessage.Clear();
+            txtEncrypted1.Clear();
+            txtEncrypted2.Clear();
+
+ 
+            txtPrivateKeyInput.Clear();
+            txtDecrypted1.Clear();
+            txtDecrypted2.Clear();
+            txtDecrypted.Clear();
         }
     }
 }
