@@ -8,19 +8,24 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\HuynhHoai\\.nuget\\packages\\": {}
+    "C:\\Users\\akquy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\ATBMTT.csproj",
+      "projectUniqueName": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\ATBMTT.csproj",
       "projectName": "ATBMTT",
-      "projectPath": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\ATBMTT.csproj",
-      "packagesPath": "C:\\Users\\HuynhHoai\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\obj\\",
+      "projectPath": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\ATBMTT.csproj",
+      "packagesPath": "C:\\Users\\akquy\\.nuget\\packages\\",
+      "outputPath": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\HuynhHoai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\akquy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -46,7 +51,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -70,7 +76,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

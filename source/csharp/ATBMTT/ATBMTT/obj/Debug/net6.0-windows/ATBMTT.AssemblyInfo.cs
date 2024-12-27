@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ATBMTT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a338c0019ad190156ad06d781230b621e45634d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d0f4c8b2679f321c2199797ea3dc9008611cef8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ATBMTT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ATBMTT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

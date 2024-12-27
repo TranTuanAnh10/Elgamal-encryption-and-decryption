@@ -173,7 +173,7 @@ namespace ATBMTT
             return string.Join(";", encryptedBlocks);
         }
 
-        private string DecryptLongMessage(string encryptedMessage, BigInteger p, BigInteger privateKey)
+        private string DecryptLongMessage(string encryptedMessage, BigInteger p, BigInteger privateKey)  
         {
             var blocks = encryptedMessage.Split(';');
             List<byte> messageBytes = new List<byte>();

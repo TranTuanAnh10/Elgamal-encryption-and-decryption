@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\",
+  "WorkspaceRootPath": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|c:\\code\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|d:\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|solutionrelative:atbmtt\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|c:\\code\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|d:\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|solutionrelative:atbmtt\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|c:\\code\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|d:\\elgamal-encryption-and-decryption\\source\\csharp\\atbmtt\\atbmtt\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{0ED454C6-C390-46A1-B6E9-81728E99E0C4}|ATBMTT\\ATBMTT.csproj|solutionrelative:atbmtt\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -28,35 +28,33 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ATBMTT\\MainWindow.xaml",
-              "ToolTip": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml",
+              "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml",
               "RelativeToolTip": "ATBMTT\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-18T11:09:08.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-18T11:09:08.293Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
+              "DocumentMoniker": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
               "RelativeDocumentMoniker": "ATBMTT\\App.xaml",
-              "ToolTip": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
+              "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\App.xaml",
               "RelativeToolTip": "ATBMTT\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-18T11:09:00.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-18T11:09:00.003Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "ATBMTT\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Code\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\elgamal-encryption-and-decryption\\source\\csharp\\ATBMTT\\ATBMTT\\MainWindow.xaml.cs",
               "RelativeToolTip": "ATBMTT\\MainWindow.xaml.cs",
-              "ViewState": "AgIAALAAAAAAAAAAAAAIwL0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAADwv68AAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T13:09:56.869Z",
               "EditorCaption": ""
